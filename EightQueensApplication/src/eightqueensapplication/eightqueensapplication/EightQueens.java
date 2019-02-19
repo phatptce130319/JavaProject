@@ -58,7 +58,6 @@ public class EightQueens extends javax.swing.JFrame {
 
         inputField.setLayout(new javax.swing.BoxLayout(inputField, javax.swing.BoxLayout.LINE_AXIS));
 
-        inputText.setText("");
         inputText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 inputTextFocusGained(evt);
@@ -73,6 +72,8 @@ public class EightQueens extends javax.swing.JFrame {
             }
         });
         inputField.add(inputText);
+        inputText.setText("Input size of chessboard");
+        inputText.setForeground(Color.GRAY);
 
         confirmButton.setText("Enter");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +125,7 @@ public class EightQueens extends javax.swing.JFrame {
 
     private void inputTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTextFocusGained
         // TODO add your handling code here:
-        if (inputText.getText().equals("Input size of chess")){
+        if (inputText.getText().equals("Input size of chessboard")){
            inputText.setText("");
         }
         inputText.setForeground(Color.BLACK);
@@ -133,7 +134,7 @@ public class EightQueens extends javax.swing.JFrame {
     private void inputTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTextFocusLost
         // TODO add your handling code here:
         if (inputText.getText().equals("")){
-           inputText.setText("Input size of chess");
+           inputText.setText("Input size of chessboard");
         }
         inputText.setForeground(Color.GRAY);
     }//GEN-LAST:event_inputTextFocusLost
