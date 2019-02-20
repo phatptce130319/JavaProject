@@ -160,6 +160,7 @@ public class EightQueens extends javax.swing.JFrame {
                     playGround.add(square);
                     square.setLayout(new BoxLayout(square,BoxLayout.X_AXIS));
                     if (i % 2 == 0) {
+                        square.setBackground( j % 2 == 0 ? Color.white : Color.red );
                         if (NQueen.state[i][j] == 'Q') {
                             JLabel label = new JLabel();
                             ImageIcon myPicture = null;
@@ -177,9 +178,10 @@ public class EightQueens extends javax.swing.JFrame {
                          
                             
                         }
-                        else square.setBackground( j % 2 == 0 ? Color.white : Color.black );
+                        else square.setBackground( j % 2 == 0 ? Color.white : Color.red );
                     }
                     else {
+                        square.setBackground( j % 2 == 0 ? Color.red : Color.white );  
                         if (NQueen.state[i][j] == 'Q') {
                             JLabel label = new JLabel();
                             ImageIcon myPicture = null;
@@ -194,7 +196,7 @@ public class EightQueens extends javax.swing.JFrame {
                          square.add(label);
                          square.add(Box.createHorizontalGlue());
                         }
-                        else square.setBackground( j % 2 == 0 ? Color.black : Color.white );  
+                        else square.setBackground( j % 2 == 0 ? Color.red : Color.white );  
                     }
                      
                 }
