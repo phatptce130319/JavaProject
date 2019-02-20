@@ -143,9 +143,11 @@ public class EightQueens extends javax.swing.JFrame {
         // TODO add your handling code here:
         GridLayout gridLayout;
         playGround.removeAll();
+        int n = 0;
         try {
             String input = inputText.getText().trim();
-            int n = Integer.parseInt(input);
+            n = Integer.parseInt(input);
+            if (n > 13) throw new Exception();
             NQueen.N = n;
             NQueen.state = new char[n][n];
             gridLayout = new GridLayout(n,n);
@@ -206,7 +208,8 @@ public class EightQueens extends javax.swing.JFrame {
             playGround.removeAll();
             playGround.validate();
             playGround.repaint();
-            resultText.setText("Cannot calculate");
+            if (n > 13) resultText.setText("The input is too large to calculate");
+            else resultText.setText("The input is invalid");
       }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
