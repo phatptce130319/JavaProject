@@ -143,9 +143,11 @@ public class EightQueens extends javax.swing.JFrame {
         // TODO add your handling code here:
         GridLayout gridLayout;
         playGround.removeAll();
+        int n = 0;
         try {
             String input = inputText.getText().trim();
-            int n = Integer.parseInt(input);
+            n = Integer.parseInt(input);
+            if (n > 13) throw new Exception();
             NQueen.N = n;
             NQueen.state = new char[n][n];
             gridLayout = new GridLayout(n,n);
@@ -158,6 +160,7 @@ public class EightQueens extends javax.swing.JFrame {
                     playGround.add(square);
                     square.setLayout(new BoxLayout(square,BoxLayout.X_AXIS));
                     if (i % 2 == 0) {
+                        square.setBackground( j % 2 == 0 ? Color.white : Color.red );
                         if (NQueen.state[i][j] == 'Q') {
                             JLabel label = new JLabel();
                             ImageIcon myPicture = null;
@@ -175,9 +178,10 @@ public class EightQueens extends javax.swing.JFrame {
                          
                             
                         }
-                        else square.setBackground( j % 2 == 0 ? Color.white : Color.black );
+                        else square.setBackground( j % 2 == 0 ? Color.white : Color.red );
                     }
                     else {
+                        square.setBackground( j % 2 == 0 ? Color.red : Color.white );  
                         if (NQueen.state[i][j] == 'Q') {
                             JLabel label = new JLabel();
                             ImageIcon myPicture = null;
@@ -192,7 +196,7 @@ public class EightQueens extends javax.swing.JFrame {
                          square.add(label);
                          square.add(Box.createHorizontalGlue());
                         }
-                        else square.setBackground( j % 2 == 0 ? Color.black : Color.white );  
+                        else square.setBackground( j % 2 == 0 ? Color.red : Color.white );  
                     }
                      
                 }
@@ -206,7 +210,8 @@ public class EightQueens extends javax.swing.JFrame {
             playGround.removeAll();
             playGround.validate();
             playGround.repaint();
-            resultText.setText("Cannot calculate");
+            if (n > 13) resultText.setText("The input is too large to calculate");
+            else resultText.setText("The input is invalid");
       }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
