@@ -153,7 +153,7 @@ public class EightQueens extends javax.swing.JFrame {
             gridLayout = new GridLayout(n,n);
             playGround.setLayout(gridLayout);
             NQueen.runSolution();
-            resultText.setText("Total : " + Integer.toString(NQueen.count));
+            resultText.setText("The total ways to place the queen on the " + input + " x " + input + " board : " + Integer.toString(NQueen.count));
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     JPanel square = new JPanel( new BorderLayout());
