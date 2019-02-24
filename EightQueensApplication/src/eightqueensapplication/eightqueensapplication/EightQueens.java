@@ -8,6 +8,7 @@ package eightqueensapplication;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
@@ -27,6 +28,7 @@ public class EightQueens extends javax.swing.JFrame {
      */
     public EightQueens() {
         initComponents();
+        
     }
 
     /**
@@ -47,7 +49,7 @@ public class EightQueens extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eight Queens Application");
-        setPreferredSize(new java.awt.Dimension(600, 750));
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
 
         appName.setEditable(false);
         appName.setBackground(new java.awt.Color(255, 51, 51));
@@ -58,6 +60,7 @@ public class EightQueens extends javax.swing.JFrame {
 
         inputField.setLayout(new javax.swing.BoxLayout(inputField, javax.swing.BoxLayout.LINE_AXIS));
 
+        inputText.setBackground(new java.awt.Color(204, 204, 204));
         inputText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 inputTextFocusGained(evt);
@@ -75,6 +78,7 @@ public class EightQueens extends javax.swing.JFrame {
         inputText.setText("Input size of chessboard");
         inputText.setForeground(Color.GRAY);
 
+        confirmButton.setBackground(new java.awt.Color(255, 255, 153));
         confirmButton.setText("Enter");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,17 +97,19 @@ public class EightQueens extends javax.swing.JFrame {
         );
         playGroundLayout.setVerticalGroup(
             playGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
+            .addGap(0, 417, Short.MAX_VALUE)
         );
 
         resultText.setEditable(false);
-        resultText.setText("Total:");
+        resultText.setBackground(new java.awt.Color(255, 204, 204));
+        resultText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        resultText.setText("The result will be here!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(appName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
             .addComponent(inputField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(playGround, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(resultText)
@@ -154,6 +160,7 @@ public class EightQueens extends javax.swing.JFrame {
             playGround.setLayout(gridLayout);
             NQueen.runSolution();
             resultText.setText("The total ways to place the queen on the " + input + " x " + input + " board : " + Integer.toString(NQueen.count));
+            resultText.setForeground(Color.blue);
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     JPanel square = new JPanel( new BorderLayout());
@@ -212,6 +219,7 @@ public class EightQueens extends javax.swing.JFrame {
             playGround.repaint();
             if (n > 13) resultText.setText("The input is too large to calculate");
             else resultText.setText("The input is invalid");
+            resultText.setForeground(Color.red);
       }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
