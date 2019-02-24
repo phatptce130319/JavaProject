@@ -131,6 +131,7 @@ public class EightQueens extends javax.swing.JFrame {
 
     private void inputTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTextFocusGained
         // TODO add your handling code here:
+        // If the input text is focused, the input is available to type
         if (inputText.getText().equals("Input size of chessboard")){
            inputText.setText("");
         }
@@ -139,6 +140,7 @@ public class EightQueens extends javax.swing.JFrame {
 
     private void inputTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTextFocusLost
         // TODO add your handling code here:
+        //If the input text is not focused, the place holder is shown
         if (inputText.getText().equals("")){
            inputText.setText("Input size of chessboard");
         }
@@ -147,20 +149,27 @@ public class EightQueens extends javax.swing.JFrame {
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
+        //Create a grid layout, and clear what has been presented
         GridLayout gridLayout;
         playGround.removeAll();
         int n = 0;
         try {
+            //Take the input and check vailid
             String input = inputText.getText().trim();
             n = Integer.parseInt(input);
             if (n > 13) throw new Exception();
+            // Transfer data to algorithm class
             NQueen.N = n;
+            //Add layout to main panel
             NQueen.state = new char[n][n];
             gridLayout = new GridLayout(n,n);
             playGround.setLayout(gridLayout);
+            //Run the algorithm
             NQueen.runSolution();
+            //Print the numbers of resutls
             resultText.setText("The total ways to place the queen on the " + input + " x " + input + " board : " + Integer.toString(NQueen.count));
             resultText.setForeground(Color.blue);
+            //Create chess board and place chess
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     JPanel square = new JPanel( new BorderLayout());
@@ -208,15 +217,18 @@ public class EightQueens extends javax.swing.JFrame {
                      
                 }
             }
+            //Reset everything
             NQueen.count = 0;
             NQueen.state = null;
             NQueen.isPrint = false;
+            //Repaint ui
             playGround.validate();
             playGround.repaint();
       } catch (Exception e){
             playGround.removeAll();
             playGround.validate();
             playGround.repaint();
+            //If error , result is assigned by error text
             if (n > 13) resultText.setText("The input is too large to calculate");
             else resultText.setText("The input is invalid");
             resultText.setForeground(Color.red);
