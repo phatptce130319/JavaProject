@@ -15,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -229,8 +230,14 @@ public class EightQueens extends javax.swing.JFrame {
             playGround.validate();
             playGround.repaint();
             //If error , result is assigned by error text
-            if (n > 13) resultText.setText("The input is too large to calculate");
-            else resultText.setText("The input is invalid");
+            if (n > 13){
+                resultText.setText("The input is too large to calculate");
+                JOptionPane.showMessageDialog(playGround,"The input is too large, the input must not be greater than 13","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                resultText.setText("The input is invalid");
+                JOptionPane.showMessageDialog(playGround,"The input must be a positive integer","Error",JOptionPane.ERROR_MESSAGE);
+            }
             resultText.setForeground(Color.red);
       }
     }//GEN-LAST:event_confirmButtonActionPerformed
